@@ -90,20 +90,33 @@ Don't forget to star the repo
             </div>
         </div>
     </div>
-    <div id="audio-player" style="z-index: 99;background: #ffffff33; width: 100%;margin: 0px;color: var(--light);backdrop-filter: blur(4px);border-top-left-radius: 10px;border-top-right-radius: 20px;">
-        <div class="row" style="margin: 0px;">
-            <div class="col-auto fit-content" style="padding: 0px;">
-                <img class="img-fluid d-inline" id="player-image" style="height: 75px;width: 75px;border-radius: 10px;" src="https://i.pinimg.com/originals/ed/54/d2/ed54d2fa700d36d4f2671e1be84651df.jpg" loading="lazy">
+   
+
+    <div id="audio-player" style="z-index: 99; background: #ffffff33; width: 100%; margin: 0px; color: var(--light); backdrop-filter: blur(4px); border-top-left-radius: 10px; border-top-right-radius: 20px;">
+    <div class="row" style="margin: 0px;">
+        <div class="col-auto fit-content" style="padding: 0px;">
+            <img class="img-fluid d-inline" id="player-image" style="height: 75px; width: 75px; border-radius: 10px;" src="https://i.pinimg.com/originals/ed/54/d2/ed54d2fa700d36d4f2671e1be84651df.jpg" loading="lazy">
+        </div>
+        <div class="col fit-content" style="padding: 0px;">
+            <div style="max-height: 24px; max-width: 95%; word-wrap: normal; padding-left: 20px;">
+                <div class="d-flex justify-content-between align-items-center">
+                    <span id="player-name">Song</span>
+                    <!-- Download button added here -->
+                    <button id="download-button" class="btn btn-primary" onclick="downloadCurrentSong()">Download</button>
+                </div>
+                <span id="player-album">Album</span>
             </div>
-            <div class="col fit-content" style="padding: 0px;">
-                <div style="max-height: 24px;max-width: 95%;word-wrap: normal; padding-left: 20px;"><span id="player-name">Song</span><span><br></span><span id="player-album">Album</span></div><br>
-                <audio id="player" controls="controls" controlsList="nodownload" style="width: 100%;height: 30px; padding-left: 20px; padding-top:5px;">
+            <div class="d-flex justify-content-start" style="padding-left: 20px;">
+                <audio id="player" controls="controls" style="width: 100%; height: 30px;">
                     <source id="audioSource" src=""></source>
                     Your browser does not support the audio format.
                 </audio>
             </div>
         </div>
     </div>
+</div>
+
+    
 <!-- old floating button that i do not need      
     <!-- floating downloader popup -->
 <!-- <div class="float-button" style="width:30px; height:30px; border-radius:50%; background-color:#fff; box-shadow: 0 0 10px #000; cursor:pointer; position:fixed; top:50px; right:20px; z-index:9999;">
@@ -231,6 +244,15 @@ Don't forget to star the repo
     
     </div>
 </div>
+
+<script>
+    // Function to handle the download action
+    function downloadCurrentSong() {
+        // Replace this with your download logic
+        // For example, you can trigger a download dialog or navigate to a download link
+        alert("Download initiated. Replace this alert with your download logic.");
+    }
+</script>
 <script>
     // Select modal
     var mpopup = document.getElementById('mpopupBox');
