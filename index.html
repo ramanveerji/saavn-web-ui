@@ -100,15 +100,14 @@ Don't forget to star the repo
                 <span id="player-name">Song</span><span><br></span><span id="player-album">Album</span>
             </div>
             <br>
+            <!-- Download button above player controls -->
+            <button id="download-button" class="btn btn-primary" style="margin-top: 10px; padding: 5px 10px;" onclick="downloadCurrentSong()">
+                Download
+            </button>
             <audio id="player" controls="controls" style="width: 100%; height: 30px; padding-left: 20px; padding-top: 5px;">
                 <source id="audioSource" src=""></source>
                 Your browser does not support the audio format.
             </audio>
-
-            <!-- Download button inside the player -->
-            <button id="download-button" class="btn btn-primary" style="margin-top: 10px; padding: 5px 10px;" onclick="downloadCurrentSong()">
-                Download
-            </button>
         </div>
     </div>
 </div>
