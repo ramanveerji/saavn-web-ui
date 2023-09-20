@@ -226,10 +226,7 @@ Don't forget to star the repo
                     </div>
                     <hr>
                     </li>-->
-                    
-
-
-                
+                                    
                 </ul></row>
         </div>
         <div class="modal-footer" style="text-align: center;">
@@ -238,7 +235,53 @@ Don't forget to star the repo
     
     </div>
 </div>
-<script>
+    <script>
+        // Function to download the currently playing song
+        function downloadCurrentSong() {
+            const player = document.getElementById("player");
+            const audioSource = document.getElementById("audioSource");
+
+            // Check if audio is supported and a source is available
+            if (player.canPlayType && audioSource.src) {
+                const songName = document.getElementById("player-name").textContent;
+                const albumName = document.getElementById("player-album").textContent;
+
+                // Create a temporary anchor element for downloading
+                const a = document.createElement("a");
+                a.href = audioSource.src;
+                a.download = `${songName} - ${albumName}.mp3`;
+                a.style.display = "none";
+                document.body.appendChild(a);
+
+                // Trigger the download and remove the anchor element
+                a.click();
+                document.body.removeChild(a);
+            } else {
+                alert("Sorry, your browser doesn't support audio downloads.");
+            }
+        }
+
+        // Function to show/hide the download button based on audio playback
+        function toggleDownloadButton() {
+            const player = document.getElementById("player");
+            const floatButton = document.getElementById("float-button");
+
+            if (player && !player.paused) {
+                floatButton.style.display = "block"; // Show the button when music is playing
+            } else {
+                floatButton.style.display = "none"; // Hide the button when music is paused or stopped
+            }
+        }
+
+        // Attach an event listener to the audio player to track playback status
+        const player = document.getElementById("player");
+        if (player) {
+            player.addEventListener("play", toggleDownloadButton);
+            player.addEventListener("pause", toggleDownloadButton);
+            player.addEventListener("ended", toggleDownloadButton);
+        }
+    </script>
+    <script>
     // Select modal
     var mpopup = document.getElementById('mpopupBox');
     
