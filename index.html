@@ -103,16 +103,15 @@ Don't forget to star the repo
                 </audio>
             </div>
         </div>
+            <!-- Add the Download button -->
+            <button id="download-button" class="btn btn-primary" style="margin-top: 10px;" onclick="downloadCurrentSong()">Download</button>
     </div>
-<!-- old floating button that i do not need      
     <!-- floating downloader popup -->
-<!-- <div class="float-button" style="width:30px; height:30px; border-radius:50%; background-color:#fff; box-shadow: 0 0 10px #000; cursor:pointer; position:fixed; top:50px; right:20px; z-index:9999;">
+<div class="float-button" style="width:30px; height:30px; border-radius:50%; background-color:#fff; box-shadow: 0 0 10px #000; cursor:pointer; position:fixed; top:50px; right:20px; z-index:9999;">
     <!-- download icon -->
     <a href="javascript:void(0);" class="btn btn-primary" id="mpopupLink">
         <img src="https://img.icons8.com/ios/50/000000/download.png">
-    </a></div> -->
--->
-    
+    </a></div>
     <style>
                                 
         #saavn-results{
@@ -159,17 +158,6 @@ Don't forget to star the repo
         border-style: none;
         }
         .search-toggle:nth-child(10n+1){color:#ceea82}.search-toggle:nth-child(10n+2){color:#70cee2}.search-toggle:nth-child(10n+3){color:#ef2b2d}.search-toggle:nth-child(10n+4){color:#23b805}.search-toggle:nth-child(10n+5){color:var(--primary)}.search-toggle:nth-child(10n+6){color:#cee007}.search-toggle:nth-child(10n+7){color:#ff77a8}.search-toggle:nth-child(10n+8){color:#21a9af}.search-toggle:nth-child(10n+9){color:var(--warning)}.search-toggle:nth-child(10n+10){color:#e316e7}
-      .float-button {
-            /* Adjust the position and size as needed */
-            /* Example: position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; */
-        }
-
-        /* Additional styling for the floating button */
-        .float-button button {
-            /* Add any specific button styles here */
-            /* Example: background-color: #007bff; color: #fff; */
-            font-size: 16px; /* Adjust the font size as needed */
-        }
     </style>
     <style>
         .mpopup {
@@ -263,6 +251,35 @@ Don't forget to star the repo
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/functions.js"></script>
     <script src="assets/js/saavn-search.js"></script>
+
+<script>
+    // Function to download the currently playing song
+    function downloadCurrentSong() {
+        const player = document.getElementById("player");
+        const audioSource = document.getElementById("audioSource");
+
+        // Check if audio is supported and a source is available
+        if (player.canPlayType && audioSource.src) {
+            const songName = document.getElementById("player-name").textContent;
+            const albumName = document.getElementById("player-album").textContent;
+
+            // Create a temporary anchor element for downloading
+            const a = document.createElement("a");
+            a.href = audioSource.src;
+            a.download = `${songName} - ${albumName}.mp3`;
+            a.style.display = "none";
+            document.body.appendChild(a);
+
+            // Trigger the download and remove the anchor element
+            a.click();
+            document.body.removeChild(a);
+        } else {
+            alert("Sorry, your browser doesn't support audio downloads.");
+        }
+    }
+</script>
+    
+    
 </body>
 
 </html>
