@@ -1,3 +1,37 @@
+// Get references to the necessary elements
+const audioPlayer = document.getElementById('player');
+const audioSource = document.getElementById('audioSource');
+const downloadButton = document.getElementById('download-button');
+const downloadLink = document.createElement('a');
+
+// Function to generate a downloadable link for the current audio
+function generateDownloadLink() {
+    const currentSource = audioSource.getAttribute('src');
+    if (currentSource) {
+        // Create a Blob from the audio source
+        fetch(currentSource)
+            .then(response => response.blob())
+            .then(blob => {
+                const url = window.URL.createObjectURL(blob);
+
+                // Set the download link attributes
+                downloadLink.href = url;
+                downloadLink.download = 'song.mp3';
+            })
+            .catch(error => console.error('Error generating download link:', error));
+    }
+}
+
+// Add an event listener to the download button
+downloadButton.addEventListener('click', generateDownloadLink);
+
+// Add an event listener to reset the download link when audio changes
+audioPlayer.addEventListener('play', () => {
+    downloadLink.href = '';
+    downloadLink.download = '';
+});
+
+
 function PlayAudio(audio_url, song_id) {
     
   var audio = document.getElementById('player');
