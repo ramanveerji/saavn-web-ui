@@ -25,6 +25,20 @@ if (promise) {
 }//call this to just preload the audio without playing
   audio.play(); //call this to play the song right away
 };
+
+function downloadSong() {
+    // Replace 'song-url' with the actual URL of the song you want to download.
+    const songUrl = 'https://example.com/song.mp3';
+
+    // Create an anchor element to trigger the download.
+    const link = document.createElement('a');
+    link.href = songUrl;
+    link.download = 'song.mp3';
+
+    // Trigger a click event on the anchor element.
+    link.click();
+}
+
 function searchSong(search_term) {
     
 document.getElementById('search-box').value=search_term;
