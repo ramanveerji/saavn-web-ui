@@ -248,11 +248,24 @@ Don't forget to star the repo
 <script>
     // Function to handle the download action
     function downloadCurrentSong() {
-        // Replace this with your download logic
-        // For example, you can trigger a download dialog or navigate to a download link
-        alert("Download initiated. Replace this alert with your download logic.");
+        // Replace with the actual content you want to download
+        const content = "This is the content of the file that you want to download.";
+
+        // Create a Blob containing the content
+        const blob = new Blob([content], { type: "text/plain" });
+
+        // Create a temporary link element
+        const link = document.createElement("a");
+        link.href = window.URL.createObjectURL(blob);
+
+        // Set the filename for the download
+        link.download = "downloaded-file.txt";
+
+        // Trigger the click event on the link to initiate the download
+        link.click();
     }
 </script>
+    
 <script>
     // Select modal
     var mpopup = document.getElementById('mpopupBox');
