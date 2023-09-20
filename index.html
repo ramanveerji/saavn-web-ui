@@ -100,17 +100,16 @@ Don't forget to star the repo
             <div style="max-height: 24px; max-width: 95%; word-wrap: normal; padding-left: 20px;">
                 <span id="player-name">Song</span><span><br></span><span id="player-album">Album</span>
             </div>
-            <br>
-            <div class="d-flex justify-content-end"> <!-- Align the button to the right -->
-                <!-- Download button above player controls -->
-                <button id="download-button" class="btn btn-primary" style="margin-top: 10px; padding: 5px 10px;" onclick="downloadCurrentSong()">
+            <div class="d-flex justify-content-between align-items-center" style="padding-left: 20px;">
+                <!-- Download button in line with the song name -->
+                <button id="download-button" class="btn btn-primary" style="padding: 5px 10px;" onclick="downloadCurrentSong()">
                     Download
                 </button>
+                <audio id="player" controls="controls" style="width: 70%; height: 30px;">
+                    <source id="audioSource" src=""></source>
+                    Your browser does not support the audio format.
+                </audio>
             </div>
-            <audio id="player" controls="controls" style="width: 100%; height: 30px; padding-left: 20px; padding-top: 5px;">
-                <source id="audioSource" src=""></source>
-                Your browser does not support the audio format.
-            </audio>
         </div>
     </div>
 </div>
