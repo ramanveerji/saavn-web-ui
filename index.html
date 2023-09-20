@@ -256,17 +256,22 @@ Don't forget to star the repo
     <script src="assets/js/saavn-search.js"></script>
 
 <script>
-    // Function to download the currently playing song with the original name
+    // Function to download the currently playing song with metadata in the filename
     function downloadCurrentSong() {
         const player = document.getElementById("player");
         const audioSource = document.getElementById("audioSource");
+        const songName = document.getElementById("player-name").textContent;
+        const albumName = document.getElementById("player-album").textContent;
 
         // Check if audio is supported and a source is available
         if (player.canPlayType && audioSource.src) {
-            const originalFileName = audioSource.src.split('/').pop(); // Extract the filename from the URL
+            // Combine song name and album name in the filename
+            const filename = `${songName} - ${albumName}.mp3`;
+
+            // Create a temporary anchor element for downloading
             const a = document.createElement("a");
             a.href = audioSource.src;
-            a.download = originalFileName; // Set the download attribute to the original filename
+            a.download = filename; // Set the download attribute to include metadata
             a.style.display = "none";
             document.body.appendChild(a);
 
@@ -278,6 +283,7 @@ Don't forget to star the repo
         }
     }
 </script>
+
 
     
     
