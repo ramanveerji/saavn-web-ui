@@ -90,6 +90,13 @@ Don't forget to star the repo
             </div>
         </div>
     </div>
+ <!-- Floating download button -->
+<div id="download-button-container" class="float-button" style="display: none;">
+    <button class="btn btn-primary" id="download-button">
+        <img src="https://img.icons8.com/ios/50/000000/download.png">
+    </button>
+</div>
+    
     <div id="audio-player" style="z-index: 99;background: #ffffff33; width: 100%;margin: 0px;color: var(--light);backdrop-filter: blur(4px);border-top-left-radius: 10px;border-top-right-radius: 20px;">
         <div class="row" style="margin: 0px;">
             <div class="col-auto fit-content" style="padding: 0px;">
@@ -231,6 +238,25 @@ Don't forget to star the repo
     
     </div>
 </div>
+    <script>
+    const audioPlayer = document.getElementById('player');
+    const downloadButtonContainer = document.getElementById('download-button-container');
+    
+    // Function to show the download button when the audio is playing
+    function showDownloadButton() {
+        downloadButtonContainer.style.display = 'block';
+    }
+
+    // Function to hide the download button when the audio stops
+    function hideDownloadButton() {
+        downloadButtonContainer.style.display = 'none';
+    }
+
+    // Add event listeners to the audio player to trigger show/hide
+    audioPlayer.addEventListener('play', showDownloadButton);
+    audioPlayer.addEventListener('pause', hideDownloadButton);
+    audioPlayer.addEventListener('ended', hideDownloadButton);
+</script>
 <script>
     // Select modal
     var mpopup = document.getElementById('mpopupBox');
